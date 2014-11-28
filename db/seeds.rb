@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+config = ActiveRecord::Base.connection.instance_variable_get(:@config)
+host, port, username, password, database = config.stringify_keys.values_at *%w(host port username password database)
+file = File.expand_path("../seeds.sql", __FILE__)
+
+puts "Importing #{file.gsub("#{Rails.root}/", "")} ..."
+
+`#{
+  [
+    "mysql",
+   ("-h #{host}" unless host.blank?), ("-P #{port}" unless port.blank?),
+    "-u #{username || "root"}", ("-p#{password}" unless password.blank?),
+    "#{database} < #{file}"
+  ].compact.join(" ")
+}`
+
+puts "Done."
