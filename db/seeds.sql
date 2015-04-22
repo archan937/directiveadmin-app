@@ -24,6 +24,7 @@
 # ------------------------------------------------------------
 
 LOCK TABLES `customers` WRITE;
+TRUNCATE `customers`;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 
 INSERT INTO `customers` (`id`, `sales_rep_employee_id`, `name`, `contact_first_name`, `contact_last_name`, `phone`, `address_line1`, `address_line2`, `postal_code`, `city`, `state`, `country`, `credit_limit`)
@@ -159,6 +160,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `customers_tags` WRITE;
+TRUNCATE `customers_tags`;
 /*!40000 ALTER TABLE `customers_tags` DISABLE KEYS */;
 
 INSERT INTO `customers_tags` (`customer_id`, `tag_id`)
@@ -176,6 +178,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `employees` WRITE;
+TRUNCATE `employees`;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
 
 INSERT INTO `employees` (`id`, `office_id`, `reportee_id`, `job_title`, `first_name`, `last_name`, `email`)
@@ -212,6 +215,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `offices` WRITE;
+TRUNCATE `offices`;
 /*!40000 ALTER TABLE `offices` DISABLE KEYS */;
 
 INSERT INTO `offices` (`id`, `city`, `phone`, `address_line1`, `address_line2`, `postal_code`, `state`, `country`, `territory`)
@@ -232,6 +236,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `order_details` WRITE;
+TRUNCATE `order_details`;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `order_line_number`, `quantity_ordered`, `price_each`)
@@ -3241,6 +3246,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `orders` WRITE;
+TRUNCATE `orders`;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 
 INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `required_date`, `shipped_date`, `status`, `comments`)
@@ -3580,6 +3586,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `payments` WRITE;
+TRUNCATE `payments`;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
 
 INSERT INTO `payments` (`id`, `customer_id`, `check_number`, `date`, `amount`)
@@ -3866,6 +3873,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `product_lines` WRITE;
+TRUNCATE `product_lines`;
 /*!40000 ALTER TABLE `product_lines` DISABLE KEYS */;
 
 INSERT INTO `product_lines` (`id`, `name`, `description`)
@@ -3886,6 +3894,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `products` WRITE;
+TRUNCATE `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 
 INSERT INTO `products` (`id`, `product_line_id`, `code`, `name`, `scale`, `vendor`, `description`, `quantity_in_stock`, `price`, `msrp`)
@@ -4009,6 +4018,7 @@ UNLOCK TABLES;
 # ------------------------------------------------------------
 
 LOCK TABLES `tags` WRITE;
+TRUNCATE `tags`;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 
 INSERT INTO `tags` (`id`, `name`)
@@ -4017,6 +4027,21 @@ VALUES
   (2,'posters');
 
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table users
+# ------------------------------------------------------------
+
+LOCK TABLES `users` WRITE;
+TRUNCATE `users`;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+
+INSERT INTO `users` (`id`, `email`, `encrypted_password`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `created_at`, `updated_at`)
+VALUES
+  (1, 'admin@demo.local', '$2a$10$7swgGrambu9oQFPY/2TO7.Qp1w1TWtZqqfgFQYBiao5FxUtjvAALa', NULL, NULL, NULL, 4, '2014-11-30 22:42:21', '2014-11-30 20:27:18', '127.0.0.1', '127.0.0.1', '2014-11-28 23:40:44', '2015-04-22 21:17:27');
+
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

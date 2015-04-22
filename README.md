@@ -16,6 +16,19 @@ Alter `config/database.yml` if necessary and run:
 
     $ rake db:create db:migrate db:seed
 
+### Start using the application
+
+Start the Rails application:
+
+    $ rails s
+
+Open [http://localhost:3000](http://localhost:3000) and log in with:
+
+* Email: admin@demo.local
+* Password: adminadmin
+
+And enjoy!
+
 ### Check out the gem!
 
 Check out the `DirectiveAdmin` repository at [https://github.com/archan937/directiveadmin](https://github.com/archan937/directiveadmin).
